@@ -3,6 +3,7 @@ import Home from "./routes/home/Home";
 import Layout from "./routes/layout/Layout";
 import List from "./routes/list/List";
 import Login from "./routes/login/Login";
+import Profile from "./routes/profile/Profile";
 import Single from "./routes/single/Single";
 import { createRoot } from "react-dom/client";
 import {
@@ -24,7 +25,7 @@ function App() {
           path: "/",
           element: <Home />
         }, {
-          path: "list",
+          path: "/list",
           element: <List />
         },
         {
@@ -32,15 +33,16 @@ function App() {
           element: <Single />
         },
         {
-          path: "login",
+          path: "/login",
           element: <Login />
+        },
+        {
+          path: "/profile",
+          element: <Profile />
         }
       ]
     },
-    {
-      path: "list",
-      element: <List />,
-    },
+
   ]);
 
   return (
