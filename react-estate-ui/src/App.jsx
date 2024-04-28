@@ -4,6 +4,7 @@ import Layout from "./routes/layout/Layout";
 import List from "./routes/list/List";
 import Login from "./routes/login/Login";
 import Profile from "./routes/profile/Profile";
+import Register from "./routes/register/Register";
 import Single from "./routes/single/Single";
 import { createRoot } from "react-dom/client";
 import {
@@ -39,6 +40,10 @@ function App() {
         {
           path: "/profile",
           element: <Profile />
+        },
+        {
+          path: "/register",
+          element: <Register />
         }
       ]
     },

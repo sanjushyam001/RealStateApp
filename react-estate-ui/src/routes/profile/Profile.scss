@@ -3,7 +3,7 @@
   display: flex;
   height: 100%;
 
-  @include md{
+  @include md {
     flex-direction: column;
     overflow: scroll;
   }
@@ -13,9 +13,10 @@
     overflow-y: scroll;
     padding-bottom: 50px;
 
-    @include md{
-flex: none;        
-height: max-content;      }
+    @include md {
+      flex: none;
+      height: max-content;
+    }
     .wrapper {
       padding-right: 50px;
       display: flex;
@@ -53,6 +54,15 @@ height: max-content;      }
           border-radius: 50%;
           object-fit: cover;
         }
+        button {
+          padding: 10px 20px;
+          color: white;
+          background-color: teal;
+          border: none;
+          cursor: pointer;
+          width: 100px;
+          border-radius: 5px;
+        }
       }
     }
   }
@@ -60,9 +70,10 @@ height: max-content;      }
     flex: 2;
     background-color: #fcf5f3;
     height: 100%;
-    @include md{
-        flex: none;        
-        height: max-content;      }
+    @include md {
+      flex: none;
+      height: max-content;
+    }
     .wrapper {
       padding: 0px 20px;
       height: 100%;
