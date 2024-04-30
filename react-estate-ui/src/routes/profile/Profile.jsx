@@ -1,40 +1,57 @@
-import React from 'react'
-import List from '../../components/list/List';
-import "./Profile.scss"
-import Chat from '../../components/chat/Chat';
-import apiRequest from '../../lib/apiRequest';
-import { useNavigate } from 'react-router-dom';
+import React, { useContext, useEffect } from "react";
+import List from "../../components/list/List";
+import "./Profile.scss";
+import Chat from "../../components/chat/Chat";
+import apiRequest from "../../lib/apiRequest";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 const Profile = () => {
     const navigate = useNavigate();
+    const { updateUser, currentUser } = useContext(AuthContext);
+
+    /*useEffect(() => {
+
+        if (!currentUser) {
+            navigate("/login")
+        }
+    }, [currentUser, navigate])
+    */
     const handleLogout = async (e) => {
         console.log("handleLogout invoked");
         try {
-
-            const resp = await apiRequest.post("/auth/logout")
-            localStorage.removeItem("user")
-            navigate("/")
-
+            const resp = await apiRequest.post("/auth/logout");
+            updateUser(null);
+            navigate("/");
         } catch (error) {
             console.log(error);
         }
-    }
+    };
     return (
-        <div className='profile'>
+        /*currentUser &&*/
+        (<div className="profile">
             <div className="details">
                 <div className="wrapper">
                     <div className="title">
                         <h1>User Information</h1>
-                        <button>Update Profile</button>
+                        <Link to={"/profile/update"}>
+                            <button>Update Profile</button>
+                        </Link>
                     </div>
                     <div className="info">
-                        <span>Avatar: <img src="https://www.pngall.com/wp-content/uploads/5/Profile-Male-PNG.png" alt="" /></span>
-                        <span>Username: <b>John Doe</b></span>
-                        <span>E-mail: <b>john@gmail.com</b></span>
+                        <span>
+                            Avatar: <img src={currentUser.avatar || "/pet.png"} alt="" />
+                        </span>
+                        <span>
+                            Username: <b>{currentUser.username}</b>
+                        </span>
+                        <span>
+                            E-mail: <b>{currentUser.email}</b>
+                        </span>
                         <button onClick={handleLogout}>Logout</button>
                     </div>
                     <div className="title">
                         <h1>My List</h1>
-                        <button >Add New Post</button>
+                        <button>Add New Post</button>
                     </div>
                     <List />
                     <div className="title">
@@ -48,8 +65,8 @@ const Profile = () => {
                     <Chat />
                 </div>
             </div>
-        </div>
-    )
-}
+        </div>)
+    );
+};
 
-export default Profile
+export default Profile;
