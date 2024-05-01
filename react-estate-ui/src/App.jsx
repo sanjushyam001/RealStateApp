@@ -1,8 +1,10 @@
 import Navbar from "./components/navbar/Navbar";
+import { listLoader, singleLoader } from "./loaders/loaders";
 import Home from "./routes/home/Home";
 import { Layout, RequireAuth } from "./routes/layout/Layout";
 import List from "./routes/list/List";
 import Login from "./routes/login/Login";
+import NewPost from "./routes/newPost/NewPost";
 import Profile from "./routes/profile/Profile";
 import ProfileUpdate from "./routes/profileUpdate/ProfileUpdate";
 import Register from "./routes/register/Register";
@@ -29,15 +31,19 @@ function App() {
         },
         {
           path: "/list",
-          element: <List />
+          element: <List />,
+          loader: listLoader
         },
         {
           path: "/:id",
-          element: <Single />
+          element: <Single />,
+          loader: singleLoader
+
         },
         {
           path: "/login",
-          element: <Login />
+          element: <Login />,
+
         },
 
         {
@@ -58,6 +64,10 @@ function App() {
         {
           path: "/profile/update",
           element: <ProfileUpdate />
+        },
+        {
+          path: "/add",
+          element: <NewPost />
         },
 
       ]

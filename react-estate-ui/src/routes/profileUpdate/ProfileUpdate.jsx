@@ -78,7 +78,7 @@ function ProfileUpdate() {
                         maxImageFileSize: 2000000,
                         folder: "avatars",
                     }}
-                    setAvatar={setAvatar}
+                    setState={setAvatar}
 
                 />
             </div>
